@@ -1,14 +1,8 @@
-//set up an empty cart
-
 var cart = [];
-
-// setup a get handler to get the cart
 
 function getCart() {
     return cart;
 }
-
-// set the cart
 
 function setCart(inputCart) {
     cart = inputCart;
@@ -17,12 +11,10 @@ function setCart(inputCart) {
 
 
 
-// set up a function to add item to the cart (without the price though)
 
 function addToCart(item) {
-    //generate random price for the items
     let itemPrice = Math.floor((Math.random() * 101) + 1);
-    // set item to price generated
+
     let itemObject = { item: itemPrice };
     cart.push(itemObject);
     console.log("you have just added" + " " + item + " " + "to your cart.");
@@ -32,10 +24,8 @@ function addToCart(item) {
 
 
 
-// setup a view cart function to see what you have in the cart
 
 function viewCart() {
-    // check if cart is empty
 
     if (cart.length === 0) {
         // console.log('Your shopping cart is empty.');
@@ -47,8 +37,8 @@ function viewCart() {
     } else {
         let strings = [];
         for (let iterate = 0; iterate < cart.length; iterate++) {
-            let item = Object.keys(cart[iterate]);
-            let price = cart[iterate][item];
+            let item = Object.keys(cart[iterate])
+            let price = cart[iterate][item]
 
             strings.push(item + " " + "at" + " " + "$" + price);
         }
@@ -60,15 +50,15 @@ function viewCart() {
     }
 }
 
-// get the total of the items purchased
+
 
 function total() {
     let value = [];
     for (let idx = 0; idx < cart.length; idx++) {
 
-        let itemName = Object.keys(cart[idx]);
-        let price = cart[idx][itemName];
-        value.push(price);
+        let itemName = Object.keys(cart[idx])
+        let price = cart[idx][itemName]
+        value.push(price)
 
     }
 
@@ -83,8 +73,6 @@ function total() {
 }
 
 
-// remove item not required from the cart 
-
 function removeFromCart(name) {
     for (let idx = 0; idx < cart.length; idx++) {
         if (cart[idx].hasOwnProperty(name)) {
@@ -94,38 +82,34 @@ function removeFromCart(name) {
     }
 
     if (!cart.hasOwnProperty(name)) {
-        console.log("That item is not in your cart");
+        console.log("That item is not in your cart")
 
     }
 
     return cart;
 }
 
-//setup placeorder function with card number supplied
+
 
 function placeOrder(cardNumber) {
-    //if card number is not supplied
+
     if (!cardNumber) {
         console.log("Sorry, we don\'t have a credit card on file for you. ")
     } else {
-        // if card number is supplied get total from the total function
+
         console.log("Your total cost is $" + total() + "," + "which will be charged to the card " + cardNumber);
     }
     return cart.splice(0, -1);
 }
 
 
-// add items  to the shopping cart
-addToCart("bags");
-addToCart("shoes");
-addToCart("grape");
-addToCart("banana");
 
-//view the cart
-viewCart();
-//  get the total
-total();
-// remove item from cart
-removeFromCart("bags");
-//place the order
-placeOrder(4322134234573221);
+addToCart("bags")
+addToCart("shoes")
+addToCart("grape")
+addToCart("banana")
+
+viewCart()
+total()
+removeFromCart("bags")
+placeOrder(4322134234573221)
